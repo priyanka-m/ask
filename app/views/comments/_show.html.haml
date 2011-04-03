@@ -1,0 +1,35 @@
+- if @question.comments.empty?
+  No comments for this question yet.
+- else
+  - for comment in @question.comments
+    %p
+      = comment.content
+      %br
+      Posted by 
+      = link_to comment.comment_poster.username, comment.comment_poster
+      %br
+      %b
+        %small
+          - if user_signed_in?
+            = link_to '+', comment_upvote_path(@question, comment)
+          - else
+            +
+          = comment.upvotes
+          \/
+          - if user_signed_in?
+            = link_to '-', comment_downvote_path(@question, comment)
+          - else
+            \-
+          = comment.downvotes
+      %br
+      Posted
+      = distance_of_time_in_words(comment.created_at, Time.now, true)
+      back
+      %br
+      Last Edited
+      = distance_of_time_in_words(comment.created_at, Time.now, true)
+      back      
+      - if comment.user_editable?(current_user)
+        = link_to 'Edit', edit_question_comment_path(@question, comment)
+      - if comment.user_deletable?(current_user)  
+        = link_to 'Delete', question_comment_path(@question, comment), :confirm => "Are you sure?", :method => :delete

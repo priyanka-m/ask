@@ -1,0 +1,103 @@
+body, 
+html {
+  margin: 0;
+  padding: 0px;
+  font: normal normal normal 1em/1.286 sans-serif;
+  background: #f9f9f9;
+}
+
+
+#topbar {
+  height: 28px;
+  background: #27224B;
+  color: #faffff;
+}
+
+#topbar-right {
+  float: right;
+  font-size: 80%
+}
+
+#topbar-right a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+#wrap {
+  width: 850px;
+  padding-top: 0px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+#wrap a {
+  text-decoration: none;
+  color: #0000ff;
+}
+
+
+#main #wrap {
+  float: left;
+  width: 700px;
+}
+
+#rightnavbar {
+  float: right;
+  width: 150px;
+}
+
+
+#footer #wrap {
+  width: 850px;
+  position: absolute; bottom: 0px;
+  float: left;
+  padding: 0px 0 0px 0;
+}
+
+ul
+{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+ul#navlist
+{
+  list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #32639A;
+  margin: 0;
+}
+
+ul#navlist li
+{
+  float: left;
+  margin: 2px 2px 0 2px;
+  border: 1px solid #32639A;
+}
+
+ul#navlist li#active
+{
+  border-bottom: 1px solid #fff;
+}
+
+li#active a { text-decoration: none; color: #32639A; }
+
+#rightnavbar a {
+  text-decoration: none;
+}
+
+#navlist a
+{
+  float: left;
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  padding: 4px;
+}
+
+#navlist a:hover 
+{ 
+  color: #2BC011
+}

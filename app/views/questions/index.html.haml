@@ -1,0 +1,46 @@
+-#--
+-#   Copyright (C) 2011 Priyanka Menghani <priyanka.menghani@gmail.com>
+-#
+-#   This program is free software: you can redistribute it and/or modify
+-#   it under the terms of the GNU Affero General Public License as published by
+-#   the Free Software Foundation, either version 3 of the License, or
+-#   (at your option) any later version.
+-#
+-#   This program is distributed in the hope that it will be useful,
+-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-#   GNU Affero General Public License for more details.
+-#
+-#   You should have received a copy of the GNU Affero General Public License
+-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-#++
+
+%h1 Listing questions
+
+%table
+  %tr
+    %th Content
+    %th Posted By
+    %th 
+    %th 
+    %th 
+
+  - @questions.each do |question|
+    %tr
+      %td
+        = truncate(question.content, :length => 25)
+      %td
+        = link_to question.poster.username, question.poster
+      %td
+        = link_to 'Show', question
+      - if question.user_editable?(current_user)
+        %td 
+          = link_to 'Edit', edit_question_path(question)
+    
+      - if question.user_deletable?(current_user)
+        %td
+          = link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete  
+
+%br
+- if user_signed_in?
+  = link_to 'New Question', new_question_path  

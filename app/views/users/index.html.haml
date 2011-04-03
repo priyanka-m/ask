@@ -1,0 +1,46 @@
+-#--
+-#   Copyright (C) 2011 Priyanka Menghani <priyanka.menghani@gmail.com>
+-#
+-#   This program is free software: you can redistribute it and/or modify
+-#   it under the terms of the GNU Affero General Public License as published by
+-#   the Free Software Foundation, either version 3 of the License, or
+-#   (at your option) any later version.
+-#
+-#   This program is distributed in the hope that it will be useful,
+-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-#   GNU Affero General Public License for more details.
+-#
+-#   You should have received a copy of the GNU Affero General Public License
+-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-#++
+
+
+%h1 Listing users
+
+%table
+  %tr
+    %th Name
+    %th Email
+    %th
+    %th
+    %th
+
+  - @users.each do |user| 
+    %tr
+      %td
+        = user.username
+      %td
+        = user.email
+      %td
+        = link_to 'Show', user
+      %td
+        - if user.user_editable?(current_user)
+          = link_to 'Edit', edit_user_registration_path
+      
+      %td
+        -# TODO: Put up the code for suspending the account for the admin
+  %br
+
+%br
+= link_to 'New User', new_user_registration_path
